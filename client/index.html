@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lifomatic</title>
+</head>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/http-vue-loader"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+
+<body>
+  <div id="app">  
+  
+
+  <main>
+    <router-view
+    
+    :user-login-result = "userLoginResult"
+    :user-registration-result = "userRegistrationResult"
+
+    @user-login = "userLogin"
+    @user-registration = "userRegistration"
+    >
+
+    </router-view>
+    
+  </main>
+
+</div>
+
+
+
+  
+  <script src="app.js"></script>
+</body>
+
+</html>
