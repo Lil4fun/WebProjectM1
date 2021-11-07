@@ -5,7 +5,7 @@
   <link rel="shortcut icon" href="">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lifomatic</title>
+  <title>MusicTunes</title>
 </head>
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -24,9 +24,12 @@
     
     :user-login-result = "userLoginResult"
     :user-registration-result = "userRegistrationResult"
+    :artists = "artists"
+    :albums = "albums"
 
     @user-login = "userLogin"
     @user-registration = "userRegistration"
+    @fill-albums = "fillAlbums"
     >
 
     </router-view>

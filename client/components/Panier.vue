@@ -1,9 +1,7 @@
 <template>
   <div>
     <navbar> </navbar>
-    <h1>Contact</h1>
-    <p> Email : lilian.geny@efrei.net</p>
-    
+    <h1>Music store</h1>
     <foot></foot>
   </div>
 </template>

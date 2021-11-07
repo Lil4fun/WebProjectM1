@@ -7,6 +7,10 @@ const Foot = window.httpVueLoader('./components/Foot.vue')
 const Navbar = window.httpVueLoader('./components/Navbar.vue')
 const Login = window.httpVueLoader('./components/Login.vue')
 const Register = window.httpVueLoader('./components/Register.vue')
+const Artists = window.httpVueLoader('./components/Artists.vue')
+const Artist = window.httpVueLoader('./components/Artist.vue')
+const Panier = window.httpVueLoader('./components/Panier.vue')
+const Contact = window.httpVueLoader('./components/Contact.vue')
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -18,7 +22,11 @@ const routes = [
   { path: '/foot', component: Foot },
   { path: '/nav', component: Navbar },
   { path: '/login', component: Login },
-  { path: '/register', component: Register }
+  { path: '/register', component: Register },
+  { path: '/artists', component: Artists }, 
+  { path: '/artist/:artistId', component: Artist, name: 'artist' },
+  { path: '/panier', component: Panier },
+  { path: '/contact', component: Contact}
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -36,8 +44,11 @@ const app = new Vue({
   router,
   data: {
     userRegistrationResult: '', 
-    userLoginResult: ''
+    userLoginResult: '',
+    artists: [],
+    albums: []
   },
+  
 
   methods: {
     
@@ -66,10 +77,52 @@ const app = new Vue({
         this.userLoginResult = err.response.data.message
         console.log(err.response.data.message)
       }
+    },
+
+    async fillAlbums(artistId){
+      try {
+        this.albums = []
+        artistId = parseInt(artistId)
+        console.log(artistId)
+        setTimeout(console.log('timeout'), 2000)
+        const res = await axios.get('api/getAlbums/', artistId)
+        for (i = 0; i < res.data.length ; i++){
+          this.albums.push({
+            name: res.data[i].name,
+            releaseYear: res.data[i].releaseyear,
+            imageUrl: res.data[i].imageurl
+          })
+          console.log(albums[i])
+        }
+      }
+      catch(err) {
+        console.log(err.response.data.message)
+      }
     }
   },
 
   components: { Home },
+
+  async created(){
+          try {
+          const res = await axios.get('api/getArtists')
+          temp = []
+          console.log(res.data.length)
+          for (i = 0; i < res.data.length ; i++){
+            this.artists.push({
+              name: res.data[i].name,
+              id: res.data[i].id,
+              genre: res.data[i].genre,
+              imageUrl: res.data[i].image
+            })
+          }
+        }
+
+        catch(err) {
+          console.log(err.response.data.message)
+        }
+        
+      }
 
 }).$mount('#app')
 

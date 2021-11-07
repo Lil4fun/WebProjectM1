@@ -5,10 +5,10 @@
         <router-link class="router" to="/">Home </router-link>
       </li>
       <li class="page">
-        <router-link class="router" to="/domains"> Domains </router-link>
+        <router-link class="router" to="/artists"> Artists </router-link>
       </li>
       <li class="page">
-        <router-link class="router" to="/todos"> Todos </router-link>
+        <router-link class="router" to="/contact"> Contact </router-link>
       </li>
       <li style="float: right" class="page">
         <router-link class="router" to="/login">Login </router-link>
